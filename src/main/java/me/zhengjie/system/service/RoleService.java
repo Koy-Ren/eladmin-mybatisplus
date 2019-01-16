@@ -2,7 +2,6 @@ package me.zhengjie.system.service;
 
 import me.zhengjie.system.domain.Role;
 import me.zhengjie.system.service.dto.RoleDTO;
-import me.zhengjie.system.service.dto.UserDTO;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;

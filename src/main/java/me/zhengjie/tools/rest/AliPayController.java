@@ -1,12 +1,12 @@
 package me.zhengjie.tools.rest;
 
+import me.zhengjie.tools.util.AliPayStatusEnum;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.common.aop.log.Log;
 import me.zhengjie.tools.domain.AlipayConfig;
 import me.zhengjie.tools.domain.vo.TradeVo;
 import me.zhengjie.tools.service.AlipayService;
-import me.zhengjie.tools.util.AliPayStatusEnum;
 import me.zhengjie.tools.util.AlipayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

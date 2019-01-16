@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -26,12 +28,6 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = {
-        "me.zhengjie.core.rest",
-        "me.zhengjie.system.rest",
-        "me.zhengjie.monitor.rest",
-        "me.zhengjie.quartz.rest",
-        "me.zhengjie.tools.rest",})
 public class SwaggerConfig {
 
     @Bean
@@ -48,6 +44,11 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
+                .apis(RequestHandlerSelectors.any())
+//                .apis(RequestHandlerSelectors.basePackage("me.zhengjie.monitor.rest"))
+//                .apis(RequestHandlerSelectors.basePackage("me.zhengjie.quartz.rest"))
+//                .apis(RequestHandlerSelectors.basePackage("me.zhengjie.system.rest"))
+//                .apis(RequestHandlerSelectors.basePackage("me.zhengjie.tools.rest"))
                 .paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .build()
                 .globalOperationParameters(pars);
@@ -55,7 +56,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("elune 接口文档")
+                .title("禾苗REST接口文档")
+            .description("swagger-bootstrap-ui")
+            .contact(new Contact("张俊辉","","galaxist@vip.qq.com"))
                 .version("1.0")
                 .build();
     }

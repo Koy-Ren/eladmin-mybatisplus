@@ -2,13 +2,14 @@ package me.zhengjie.monitor.service.impl;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import me.zhengjie.common.aop.log.Log;
+import me.zhengjie.monitor.domain.Logging;
+import me.zhengjie.monitor.service.LoggingService;
 import me.zhengjie.common.utils.IpUtil;
 import me.zhengjie.common.utils.RequestHolder;
 import me.zhengjie.core.security.AuthorizationUser;
 import me.zhengjie.core.utils.JwtTokenUtil;
-import me.zhengjie.monitor.domain.Logging;
 import me.zhengjie.monitor.repository.LoggingRepository;
-import me.zhengjie.monitor.service.LoggingService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class LoggingServiceImpl implements LoggingService {
     private JwtTokenUtil jwtTokenUtil;
 
     private final String LOGINPATH = "authenticationLogin";
+    private final String SIGNINPATH = "signin";
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -75,7 +77,7 @@ public class LoggingServiceImpl implements LoggingService {
         // 获取IP地址
         logging.setRequestIp(IpUtil.getIP(request));
 
-        if(!LOGINPATH.equals(signature.getName())){
+        if(!LOGINPATH.equals(signature.getName())&&!SIGNINPATH.equals(signature.getName())){
             UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             username = userDetails.getUsername();
         } else {

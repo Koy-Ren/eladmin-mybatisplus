@@ -2,9 +2,7 @@ package me.zhengjie.system.service.mapper;
 
 import me.zhengjie.common.mapper.EntityMapper;
 import me.zhengjie.system.domain.Permission;
-import me.zhengjie.system.domain.Role;
 import me.zhengjie.system.service.dto.PermissionDTO;
-import me.zhengjie.system.service.dto.RoleDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

@@ -1,7 +1,6 @@
 package me.zhengjie.monitor.rest;
 
 import me.zhengjie.common.aop.limit.Limit;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
 @RequestMapping("test")
-public class TestController {
+public abstract class TestController {
     private static final AtomicInteger ATOMIC_INTEGER = new AtomicInteger();
 
     /**

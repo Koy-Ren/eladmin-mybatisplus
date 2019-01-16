@@ -2,7 +2,6 @@ package me.zhengjie.monitor.repository;
 
 import me.zhengjie.monitor.domain.Visits;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

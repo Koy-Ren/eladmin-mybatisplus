@@ -2,8 +2,8 @@ package me.zhengjie.system.service.query;
 
 import me.zhengjie.common.utils.PageUtil;
 import me.zhengjie.system.domain.User;
-import me.zhengjie.system.repository.UserRepository;
 import me.zhengjie.system.service.dto.UserDTO;
+import me.zhengjie.system.repository.UserRepository;
 import me.zhengjie.system.service.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;

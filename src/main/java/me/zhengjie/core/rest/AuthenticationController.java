@@ -1,10 +1,12 @@
 package me.zhengjie.core.rest;
 
+import com.alibaba.fastjson.JSON;
+import me.zhengjie.common.model.JsonResponse;
+import me.zhengjie.core.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.common.aop.log.Log;
 import me.zhengjie.core.security.AuthenticationToken;
 import me.zhengjie.core.security.AuthorizationUser;
-import me.zhengjie.core.utils.JwtTokenUtil;
 import me.zhengjie.core.security.JwtUser;
 import me.zhengjie.core.utils.EncryptUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +49,7 @@ public class AuthenticationController {
      * @return
      */
     @Log(description = "用户登录")
-    @PostMapping(value = "${jwt.auth.path}")
+    @PostMapping(value = "${jwt.auth.login}")
     public ResponseEntity<?> authenticationLogin(@RequestBody AuthorizationUser authorizationUser){
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authorizationUser.getUsername());
@@ -67,6 +69,31 @@ public class AuthenticationController {
         return ResponseEntity.ok(new AuthenticationToken(token));
     }
 
+    /**
+     * 登录授权
+     * @param authorizationUser
+     * @return
+     */
+    @Log(description = "用户登录")
+    @PostMapping(value = "signin",produces="application/json;charset=UTF-8")
+    public String signin(@RequestBody AuthorizationUser authorizationUser){
+
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authorizationUser.getUsername());
+
+        if(!userDetails.getPassword().equals(EncryptUtils.encryptPassword(authorizationUser.getPassword()))){
+            throw new AccountExpiredException("密码错误");
+        }
+
+        if(!userDetails.isEnabled()){
+            throw new AccountExpiredException("账号已停用，请联系管理员");
+        }
+
+        // 生成令牌
+        final String token = jwtTokenUtil.generateToken(userDetails);
+
+        // 返回 token
+        return JSON.toJSONString(new JsonResponse(new AuthenticationToken(token)));
+    }
     /**
      * 获取用户信息
      * @param request

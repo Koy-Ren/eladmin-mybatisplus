@@ -1,10 +1,13 @@
 package me.zhengjie;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import me.zhengjie.common.utils.SpringContextHolder;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 
@@ -12,10 +15,12 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
  * @author jie
  * @date 2018/11/15 9:20:19
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = DruidDataSourceAutoConfigure.class)
+@EnableScheduling
 @EnableTransactionManagement
 @EnableWebSocketMessageBroker
-@MapperScan({"me.hemiao100.zhengjie.**.*.mapper"})
+@MapperScan({"com.hemiao100.storage.**.*.mapper"})
+//@ComponentScan(basePackages = {"me.zhengjie"})
 public class AppRun {
 
     public static void main(String[] args) {

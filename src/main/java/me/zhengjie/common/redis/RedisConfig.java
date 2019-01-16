@@ -114,11 +114,14 @@ public class RedisConfig extends CachingConfigurerSupport {
         return (target, method, params) -> {
             StringBuilder sb = new StringBuilder();
             sb.append(target.getClass().getName());
+            sb.append(".");
             sb.append(method.getName());
+            sb.append("[");
             for (Object obj : params) {
                 sb.append(obj.toString());
             }
-            log.info(sb.toString());
+            sb.append("]");
+            log.info("自定义缓存key生成策略=___"+sb.toString()+"___!");
             return sb.toString();
         };
     }

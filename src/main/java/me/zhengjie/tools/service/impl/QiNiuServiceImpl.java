@@ -9,22 +9,22 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.storage.model.FileInfo;
 import com.qiniu.util.Auth;
+import me.zhengjie.tools.domain.QiniuConfig;
+import me.zhengjie.tools.domain.QiniuContent;
+import me.zhengjie.tools.service.QiNiuService;
+import me.zhengjie.tools.util.QiNiuUtil;
 import me.zhengjie.common.exception.BadRequestException;
 import me.zhengjie.common.utils.FileUtil;
 import me.zhengjie.common.utils.ValidationUtil;
-import me.zhengjie.tools.domain.QiniuConfig;
-import me.zhengjie.tools.domain.QiniuContent;
 import me.zhengjie.tools.repository.QiNiuConfigRepository;
 import me.zhengjie.tools.repository.QiniuContentRepository;
-import me.zhengjie.tools.service.QiNiuService;
-import me.zhengjie.tools.util.QiNiuUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import java.io.UnsupportedEncodingException;
+
 import java.util.Optional;
 
 /**

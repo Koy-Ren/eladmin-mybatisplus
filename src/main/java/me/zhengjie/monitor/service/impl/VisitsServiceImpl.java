@@ -1,8 +1,8 @@
 package me.zhengjie.monitor.service.impl;
 
+import me.zhengjie.monitor.domain.Visits;
 import lombok.extern.slf4j.Slf4j;
 import me.zhengjie.common.utils.TimeUtil;
-import me.zhengjie.monitor.domain.Visits;
 import me.zhengjie.monitor.repository.LoggingRepository;
 import me.zhengjie.monitor.repository.VisitsRepository;
 import me.zhengjie.monitor.service.VisitsService;

@@ -40,8 +40,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${jwt.header}")
     private String tokenHeader;
 
-    @Value("${jwt.auth.path}")
+    @Value("${jwt.auth.login}")
     private String authenticationPath;
+
+    @Value("${jwt.auth.signin}")
+    private String authenticationSignin;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -103,11 +106,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         // AuthenticationTokenFilter will ignore the below paths
         web.ignoring()
-            .antMatchers(
-                    HttpMethod.POST,
-                    authenticationPath
-            )
-
+            .antMatchers(HttpMethod.POST, authenticationPath)
+            .and()
+            .ignoring()
+            .antMatchers(HttpMethod.POST, authenticationSignin)
             // allow anonymous resource requests
             .and()
             .ignoring()

@@ -2,13 +2,13 @@ package me.zhengjie.tools.service.impl;
 
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
-import me.zhengjie.common.exception.BadRequestException;
-import me.zhengjie.common.utils.ElAdminConstant;
 import me.zhengjie.core.utils.EncryptUtils;
 import me.zhengjie.tools.domain.EmailConfig;
 import me.zhengjie.tools.domain.vo.EmailVo;
-import me.zhengjie.tools.repository.EmailRepository;
 import me.zhengjie.tools.service.EmailService;
+import me.zhengjie.common.exception.BadRequestException;
+import me.zhengjie.common.utils.ElAdminConstant;
+import me.zhengjie.tools.repository.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,4 +1,4 @@
-# eladmin
+# eladmin-mybatisplus
 
 项目基于 https://github.com/elunez/eladmin
 

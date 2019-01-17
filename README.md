@@ -24,9 +24,12 @@
             <version>2.5.0</version>
         </dependency>
 ```
-2,增加profile文件
+2,增加profile文件  
+
 > application.yml
 > application-demo.yml
-3,AppRun调整
-  所在包向上移动一层,并添加排除Druid数据源自动配置项
+3,AppRun调整  
+
+  所在包向上移动一层,并添加排除Druid数据源自动配置项  
+  
   增加@ComponentScan(basePackages = {"me.zhengjie",    "xxx.xxx"})，方便扩展2次开发。

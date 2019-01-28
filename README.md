@@ -33,4 +33,4 @@ mybatis-plus:
 ## 3,AppRun调整  
   所在包向上移动一层,并添加排除Druid数据源自动配置项    
   增加@ComponentScan(basePackages = {"me.zhengjie",    "xxx.xxx"})，方便扩展2次开发。
-## 4,增加JsonResponse
+## 4,增加signin接口和返回JsonResponse对象

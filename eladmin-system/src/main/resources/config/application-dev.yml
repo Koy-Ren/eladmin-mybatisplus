@@ -55,8 +55,8 @@ spring:
       datasource:
         data_eladmin:
           # type: com.alibaba.druid.pool.DruidDataSource
-          username: root
-          password: root
+          username: ncc
+          password: ncc
           driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
           url: jdbc:log4jdbc:mysql://localhost:3306/eladmin?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
           druid: # 全局druid参数，绝大部分值和默认保持一致。(现已支持的参数如下,不清楚含义不要乱设置)
@@ -73,8 +73,8 @@ spring:
             validation-query-timeout: 30000
         data_meta:
           # type: com.alibaba.druid.pool.DruidDataSource
-          username: root
-          password: root
+          username: ncc
+          password: ncc
           driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
           url: jdbc:log4jdbc:mysql://localhost:3306/meta?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
           druid: # 全局druid参数，绝大部分值和默认保持一致。(现已支持的参数如下,不清楚含义不要乱设置)

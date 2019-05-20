@@ -22,7 +22,7 @@ spring:
     database: 0
     host: 127.0.0.1
     port: 6379
-    #password: 1314hemiao520
+    password:
     jedis:
       pool:
         #最大连接数
